@@ -68,24 +68,28 @@ while True:
                 print("Button UP")
                 color_bitmap[cur_loc] = prev_color
                 cur_loc[1] -= 1
+                cur_loc[1] = max(0, cur_loc[1])
                 prev_color = color_bitmap[cur_loc]
                 color_bitmap[cur_loc] = cur_color
             if packet.button == ButtonPacket.DOWN:
                 print("Button DOWN")
                 color_bitmap[cur_loc] = prev_color
                 cur_loc[1] += 1
+                cur_loc[1] = min(display.height-1, cur_loc[1])
                 prev_color = color_bitmap[cur_loc]
                 color_bitmap[cur_loc] = cur_color
             if packet.button == ButtonPacket.LEFT:
                 print("Button LEFT")
                 color_bitmap[cur_loc] = prev_color
                 cur_loc[0] -= 1
+                cur_loc[0] = max(0, cur_loc[0])
                 prev_color = color_bitmap[cur_loc]
                 color_bitmap[cur_loc] = cur_color
             if packet.button == ButtonPacket.RIGHT:
                 print("Button RIGHT")
                 color_bitmap[cur_loc] = prev_color
                 cur_loc[0] += 1
+                cur_loc[0] = min(display.width-1, cur_loc[0])
                 prev_color = color_bitmap[cur_loc]
                 color_bitmap[cur_loc] = cur_color
             if packet.button == ButtonPacket.BUTTON_1:
